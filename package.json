@@ -1,0 +1,12 @@
+{
+  "name": "com.austephnerllc.resourceattributes",
+  "version": "1.0.0",
+  "displayName": "Resource Attributes",
+  "description": "Helpful Unity Resource attributes for serialized fields.",
+  "unity": "2020.3",
+  "author": {
+    "name": "Austephner LLC",
+    "email": "support@austephner.com",
+    "url": "https://www.austephner.com"
+  }
+}
