@@ -9,7 +9,7 @@ namespace ResourceAttributes
 
         public readonly string[] paths = new string[0];
 
-        public readonly bool showNoneOption;
+        public readonly bool showNoneOption = true;
 
         public readonly string assetFileType = ".asset"; 
 
