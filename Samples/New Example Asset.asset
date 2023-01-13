@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c861e9b8b04aae8ce60914fb0963dd, type: 3}
   m_Name: New Example Asset
   m_EditorClassIdentifier: 
-  otherAssets:
+  exampleAssets:
   - {fileID: 11400000}

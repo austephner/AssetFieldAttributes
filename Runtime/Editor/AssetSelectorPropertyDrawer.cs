@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace ResourceAttributes.Editor
+namespace AssetAttributes.Editor
 {
     [CustomPropertyDrawer(typeof(AssetSelectorAttribute))]
     public class AssetSelectorPropertyDrawer : PropertyDrawer
@@ -56,7 +56,8 @@ namespace ResourceAttributes.Editor
                                 _assets, 
                                 _paths, 
                                 assetSelectorAttribute.type, 
-                                assetSelectorAttribute.assetFileType);
+                                assetSelectorAttribute.assetFileType,
+                                assetSelectorAttribute.allowFolders);
                         }
                     }
                 }
@@ -74,7 +75,8 @@ namespace ResourceAttributes.Editor
                             _assets, 
                             _paths, 
                             assetSelectorAttribute.type, 
-                            assetSelectorAttribute.assetFileType);
+                            assetSelectorAttribute.assetFileType,
+                            assetSelectorAttribute.allowFolders);
                     }
                 }
             }
@@ -93,7 +95,7 @@ namespace ResourceAttributes.Editor
             if (currentSelectionIndex == -1)
             {
                 _assets.Add(property.objectReferenceValue);
-                _paths.Add(FormatPathStringForDisplay(AssetDatabase.GetAssetPath(property.objectReferenceValue)));
+                _paths.Add(FormatPathStringForDisplay(AssetDatabase.GetAssetPath(property.objectReferenceValue), assetSelectorAttribute.allowFolders));
                 currentSelectionIndex = _assets.Count - 1;
             }
 
@@ -125,7 +127,7 @@ namespace ResourceAttributes.Editor
 
         #region Utilities
         
-        private void TryAddAssetAtPath(string filePath, List<Object> assets, List<string> paths, Type type, string assetFileType)
+        private void TryAddAssetAtPath(string filePath, List<Object> assets, List<string> paths, Type type, string assetFileType, bool allowFolders)
         {
             if (!filePath.EndsWith(assetFileType))
             {
@@ -137,14 +139,21 @@ namespace ResourceAttributes.Editor
 
             if (foundAsset)
             {
-                paths.Add(FormatPathStringForDisplay(modifiedFilePath));
+                paths.Add(FormatPathStringForDisplay(modifiedFilePath, allowFolders));
                 assets.Add(foundAsset);
             }
         }
 
-        private string FormatPathStringForDisplay(string pathString)
+        private string FormatPathStringForDisplay(string pathString, bool allowFolders)
         {
-            return pathString.Replace("\\", "/");
+            var result = pathString.Replace("\\", "/");
+
+            if (!allowFolders)
+            {
+                result = result.Split('/').LastOrDefault();
+            }
+
+            return result;
         }
 
         #endregion

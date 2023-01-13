@@ -1,8 +1,8 @@
 {
-  "name": "com.austephnerllc.resourceattributes",
+  "name": "com.austephnerllc.assetattributes",
   "version": "1.0.0",
-  "displayName": "Resource Attributes",
-  "description": "Helpful Unity Resource attributes for serialized fields.",
+  "displayName": "Asset Attributes",
+  "description": "Attributes for selecting assets with serialized fields.",
   "unity": "2020.3",
   "author": {
     "name": "Austephner LLC",

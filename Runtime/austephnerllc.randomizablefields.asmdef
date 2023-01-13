@@ -1,6 +1,6 @@
 {
-    "name": "austephnerllc.resourceattributes",
-    "rootNamespace": "Resource Attributes",
+    "name": "austephnerllc.assetattributes",
+    "rootNamespace": "AssetAttributes",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

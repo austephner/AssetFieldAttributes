@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace ResourceAttributes
+namespace AssetAttributes
 {
     public class AssetSelectorAttribute : PropertyAttribute
     {
@@ -10,6 +10,8 @@ namespace ResourceAttributes
         public readonly string[] paths = new string[0];
 
         public readonly bool showNoneOption = true;
+
+        public readonly bool allowFolders = false;
 
         public readonly string assetFileType = ".asset"; 
 
@@ -49,11 +51,12 @@ namespace ResourceAttributes
         /// <param name="paths">All top-level directory paths to use for pulling asset options from. If left null or
         /// empty, assets across the entire project will be loaded. This isn't recommended due to the poor performance.
         /// </param>
-        public AssetSelectorAttribute(Type type, bool showNoneOption, string[] paths)
+        public AssetSelectorAttribute(Type type, bool showNoneOption, bool allowFolders, string[] paths)
         {
             this.type = type;
             this.paths = paths;
             this.showNoneOption = showNoneOption;
+            this.allowFolders = allowFolders;
         }
         
         /// <summary>
@@ -65,11 +68,12 @@ namespace ResourceAttributes
         /// <param name="paths">All top-level directory paths to use for pulling asset options from. If left null or
         /// empty, assets across the entire project will be loaded. This isn't recommended due to the poor performance.
         /// </param>
-        public AssetSelectorAttribute(Type type, bool showNoneOption, string assetFileType, string[] paths)
+        public AssetSelectorAttribute(Type type, bool showNoneOption, bool allowFolders, string assetFileType, string[] paths)
         {
             this.type = type;
             this.paths = paths;
             this.showNoneOption = showNoneOption;
+            this.allowFolders = allowFolders;
             this.assetFileType = assetFileType;
         }
     }

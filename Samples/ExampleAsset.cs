@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-namespace ResourceAttributes.Samples
+namespace AssetAttributes.Samples
 {
     [CreateAssetMenu(menuName = "Resource Attributes/Example Asset")]
     public class ExampleAsset : ScriptableObject
     {
-        [AssetSelector(typeof(ExampleAsset),new string[] {"ResourceAttributes/Samples/"})] 
+        [AssetSelector(typeof(ExampleAsset), true, false, new string[] {"AssetAttributes/Samples/"})] 
         public ExampleAsset[] exampleAssets; 
     }
 }
