@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -104,22 +105,45 @@ namespace AssetAttributes.Editor
             {
                 _doubleHeightForErrorMessage = true;
                 EditorGUI.PropertyField(position, property, label);
-                EditorGUI.TextField(position, label, $"No assets of type \"{assetSelectorAttribute.type}\" were found!");
+                position.y += position.height;
+                EditorGUI.LabelField(position, label, $"No assets of type \"{assetSelectorAttribute.type}\" were found!");
             }
             else
             {
                 _doubleHeightForErrorMessage = false;
+
+                var fieldPosition = position;
+                fieldPosition.width -= 30;
+
+                var buttonPosition = position;
+                buttonPosition.x = fieldPosition.x + fieldPosition.width;
+                buttonPosition.width = 30;
                 
                 var nextSelectionIndex = EditorGUI.Popup(
-                    position,
-                    label.text, 
-                    currentSelectionIndex, 
+                    fieldPosition,
+                    label.text,
+                    currentSelectionIndex,
                     _paths.ToArray());
                 
                 if (nextSelectionIndex != currentSelectionIndex)
                 {
                     property.objectReferenceValue = _assets[nextSelectionIndex];
                 }
+
+                GUI.enabled = property.objectReferenceValue;
+                
+                var buttonContent = EditorGUIUtility.IconContent("d_Button Icon");
+                buttonContent.tooltip = "Edit"; 
+                
+                if (GUI.Button(
+                        buttonPosition,
+                        buttonContent) && 
+                    property.objectReferenceValue)
+                {
+                    Selection.activeObject = property.objectReferenceValue;
+                }
+
+                GUI.enabled = true;
             }
         }
 
@@ -159,3 +183,4 @@ namespace AssetAttributes.Editor
         #endregion
     }
 }
+#endif

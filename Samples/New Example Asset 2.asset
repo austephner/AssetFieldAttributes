@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8c861e9b8b04aae8ce60914fb0963dd, type: 3}
-  m_Name: New Example Asset
+  m_Name: New Example Asset 2
   m_EditorClassIdentifier: 
   exampleAssets:
-  - {fileID: 11400000, guid: d75036bf5be630d4b9e250af10757411, type: 2}
   - {fileID: 11400000, guid: 9cad7780fd9d1c040881c4cdbcb8c304, type: 2}
+  - {fileID: 11400000, guid: 3e260743c3e981b40bdd914ceaeee94a, type: 2}

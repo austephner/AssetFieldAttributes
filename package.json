@@ -1,6 +1,6 @@
 {
   "name": "com.austephnerllc.assetattributes",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "displayName": "Asset Attributes",
   "description": "Attributes for selecting assets with serialized fields.",
   "unity": "2020.3",
